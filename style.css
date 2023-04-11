@@ -1,0 +1,12 @@
+#sketch{
+    display: flex;
+    flex-flow: row;
+    
+}
+
+.box{
+    width: 30px;
+    height: 30px;
+    background-color:blueviolet;
+    margin: 10px;
+}
