@@ -7,6 +7,7 @@
 .box{
     width: 30px;
     height: 30px;
-    background-color:blueviolet;
-    margin: 10px;
+    border-style:dashed;
+    background-color:rgb(53, 2, 100);
+    border-color:blueviolet; 
 }

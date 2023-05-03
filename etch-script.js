@@ -15,4 +15,14 @@ function createGrid(col,row){
     
 }
 
+
 createGrid(16,16);
+
+const boxes = document.querySelectorAll('.box');
+
+boxes.forEach((box) => {
+    box.addEventListener('mouseover', () => {
+        box.style.cssText = "background-color: white";
+    });
+});
+
