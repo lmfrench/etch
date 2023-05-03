@@ -40,6 +40,13 @@ function gridSelect(){
         return userSelect;
 }
 
+function randomColor(){
+    r=Math.floor(Math.random()*256);
+    g=Math.floor(Math.random()*256);
+    b=Math.floor(Math.random()*256);
+    return "rgb("+r+","+g+","+b+")";
+}
+
 //Event listener on button to ask user for grid size
 const button = document.getElementById('select');
 button.addEventListener('click', () =>{
@@ -50,7 +57,7 @@ button.addEventListener('click', () =>{
     const boxes = document.querySelectorAll('.box');
     boxes.forEach((box) => {
     box.addEventListener('mouseover', () => {
-        box.style.cssText = "background-color: white";
+        box.style.backgroundColor = randomColor();
     });
 });
 

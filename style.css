@@ -8,6 +8,7 @@
     width: 30px;
     height: 30px;
     border-style:dashed;
-    background-color:rgb(53, 2, 100);
+    background-color:white;
     border-color:blueviolet; 
+    border-width: thin;
 }
