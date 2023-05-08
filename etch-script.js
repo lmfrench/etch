@@ -76,30 +76,44 @@ function darkenColor(style, currentBright){
     }
 }
 
+//function to change colors on hover
+function sketch(box){
+    if (box.classList.contains("boxRandom")){
+        const style = box.style.backgroundColor;
+        const currentBright = box.style.filter;
+        box.style.cssText = darkenColor(style,currentBright);                                
+    }
+    else{
+        box.style.backgroundColor = randomColor();
+        //Add class so next time it knows to darken the color
+         box.classList.add('boxRandom');
+    }                  
+        
+}
+
+
 // Start with a 10x10 grid
 createGrid(10,10);
-//Event listener on button to ask user for grid size
+
+//Event listener to change colour of each box on hoverover
+const boxes = document.querySelectorAll('.box');
+boxes.forEach((box) => {
+    box.addEventListener('mouseover', () => {
+        sketch(box);
+        // If background color already changed, darken by 10%, otherwise select a random color
+        
+    });
+});
+
+//Event listener on button so user can change grid size
 const button = document.getElementById('select');
 button.addEventListener('click', () =>{
     let gridSize = gridSelect();
     createGrid(gridSize,gridSize);
-});
-    //Event listener to change colour of each box on hoverover
-const boxes = document.querySelectorAll('.box');
-boxes.forEach((box) => {
-    box.addEventListener('mouseover', () => {
-        // If background color already changed, darken by 10%, otherwise select a random color
-        if (box.classList.contains("boxRandom")){
-            const style = box.style.backgroundColor;
-            const currentBright = box.style.filter;
-            box.style.cssText = darkenColor(style,currentBright);                                
-        }
-        else{
-            box.style.backgroundColor = randomColor();
-            //Add class so next time it knows to darken the color
-             box.classList.add('boxRandom');
-        }
-                     
-            
+    const boxes = document.querySelectorAll('.box');
+    boxes.forEach((box) => {
+        box.addEventListener('mouseover', () => {
+            sketch(box);
+        });
     });
 });
