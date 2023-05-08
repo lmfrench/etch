@@ -4,6 +4,7 @@ function createGrid(col,row){
     //Create number of boxes defined by gridSize
     for (let index = 0; index < row; index++) {
         const row = document.createElement('div');
+        row.classList.add('row');
         sketchDiv.appendChild(row);        
         for (let index = 0; index < col; index++) {
             const col = document.createElement('div');
@@ -19,7 +20,7 @@ function gridSelect(){
     //remove previous grid
     document.querySelectorAll('.box').forEach(e => e.remove());
     
-    let userSelect = prompt("How many rows?");
+    let userSelect = prompt("How many rows? (Max 30)");
     
     validSelection = false;
     while (validSelection !==true){
@@ -27,9 +28,9 @@ function gridSelect(){
         if (isNaN(userSelect)){
             userSelect = prompt("You must enter a number. How many rows?");
         }
-        //check not higher than 100
-        else if (userSelect >100){
-            userSelect = prompt("You must enter less than 100. How many rows?");
+        //check not higher than 30
+        else if (userSelect >30 || userSelect <1 ){
+            userSelect = prompt("You must enter a number between 0-30. How many rows?");
         }
         
         else {
