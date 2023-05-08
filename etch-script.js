@@ -54,21 +54,51 @@ function randomColor(){
     return "rgb("+r+","+g+","+b+")";
 }
 
+function darkenColor(style, currentBright){
+
+    //if the current brightness hasn't changed before, then reduce by 10%
+    if (currentBright == ""){
+        return("background-color: "+ style + "; filter: brightness(90%)");
+    
+    }
+
+    //if current brightness has changed before, then keep reducing by 10%
+    else{
+        //select current brightness level, and reduce by 10
+        const newBright =Number(currentBright.slice(11,13))-10;
+        // if the new brightness level is higher than 10, change the brightness, otherwise keep it at 10 (10 brightness = black)
+        if (newBright >=10){
+            return("background-color: "+ style + "; filter: brightness("+ newBright + "%)"); 
+        }
+        else {
+            return("background-color: "+ style + "; filter: brightness(10%)");
+        }
+    }
+}
+
 //Event listener on button to ask user for grid size
 const button = document.getElementById('select');
 button.addEventListener('click', () =>{
     let gridSize = gridSelect();
     createGrid(gridSize,gridSize);
     
-    //Event listener to change color on hoverover
+    //Event listener to change colour of each box on hoverover
     const boxes = document.querySelectorAll('.box');
     boxes.forEach((box) => {
-    box.addEventListener('mouseover', () => {
-        box.style.backgroundColor = randomColor();
+        box.addEventListener('mouseover', () => {
+            // If background color already changed, darken by 10%, otherwise select a random color
+            if (box.classList.contains("boxRandom")){
+                const style = box.style.backgroundColor;
+                const currentBright = box.style.filter;
+                box.style.cssText = darkenColor(style,currentBright);                                
+            }
+            else{
+             box.style.backgroundColor = randomColor();
+            //Add class so next time it knows to darken the color
+             box.classList.add('boxRandom');
+            }
+                     
+            
+        });
     });
 });
-
-});
-
-
-

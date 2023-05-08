@@ -31,12 +31,13 @@ p{
     
 }
 
+
 .box{
+    background-color:white;
+    border-color:blueviolet; 
     display: flex;
     border-style:dashed;
     border-width: 3px;
-    background-color:white;
-    border-color:blueviolet; 
     min-height: 10px;
     min-width: 10px;
     flex-grow: 1;
