@@ -76,6 +76,8 @@ function darkenColor(style, currentBright){
     }
 }
 
+// Start with a 10x10 grid
+createGrid(10,10);
 //Event listener on button to ask user for grid size
 const button = document.getElementById('select');
 button.addEventListener('click', () =>{
