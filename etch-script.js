@@ -83,24 +83,23 @@ const button = document.getElementById('select');
 button.addEventListener('click', () =>{
     let gridSize = gridSelect();
     createGrid(gridSize,gridSize);
-    
+});
     //Event listener to change colour of each box on hoverover
-    const boxes = document.querySelectorAll('.box');
-    boxes.forEach((box) => {
-        box.addEventListener('mouseover', () => {
-            // If background color already changed, darken by 10%, otherwise select a random color
-            if (box.classList.contains("boxRandom")){
-                const style = box.style.backgroundColor;
-                const currentBright = box.style.filter;
-                box.style.cssText = darkenColor(style,currentBright);                                
-            }
-            else{
-             box.style.backgroundColor = randomColor();
+const boxes = document.querySelectorAll('.box');
+boxes.forEach((box) => {
+    box.addEventListener('mouseover', () => {
+        // If background color already changed, darken by 10%, otherwise select a random color
+        if (box.classList.contains("boxRandom")){
+            const style = box.style.backgroundColor;
+            const currentBright = box.style.filter;
+            box.style.cssText = darkenColor(style,currentBright);                                
+        }
+        else{
+            box.style.backgroundColor = randomColor();
             //Add class so next time it knows to darken the color
              box.classList.add('boxRandom');
-            }
+        }
                      
             
-        });
     });
 });
