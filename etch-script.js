@@ -1,6 +1,12 @@
 function createGrid(col,row){
     const sketchDiv = document.getElementById('sketch');
 
+    //Remove previous grid
+    const rows = document.querySelectorAll('.row');
+    rows.forEach((row) => {
+        row.remove();
+    });
+
     //Create number of boxes defined by gridSize
     for (let index = 0; index < row; index++) {
         const row = document.createElement('div');
