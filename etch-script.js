@@ -66,18 +66,19 @@ function darkenColor(style, currentBright){
     else{
         //select current brightness level, and reduce by 10
         const newBright =Number(currentBright.slice(11,13))-10;
-        // if the new brightness level is higher than 10, change the brightness, otherwise keep it at 10 (10 brightness = black)
-        if (newBright >=10){
+        // if the new brightness level is higher than 0, change the brightness
+        if (newBright >=0){
             return("background-color: "+ style + "; filter: brightness("+ newBright + "%)"); 
         }
         else {
-            return("background-color: "+ style + "; filter: brightness(10%)");
+            return("background-color: "+ style + "; filter: brightness(0%)");
         }
     }
 }
 
 //function to change colors on hover
 function sketch(box){
+    // If background color already changed, darken by 10%, otherwise select a random color
     if (box.classList.contains("boxRandom")){
         const style = box.style.backgroundColor;
         const currentBright = box.style.filter;
@@ -100,7 +101,7 @@ const boxes = document.querySelectorAll('.box');
 boxes.forEach((box) => {
     box.addEventListener('mouseover', () => {
         sketch(box);
-        // If background color already changed, darken by 10%, otherwise select a random color
+        
         
     });
 });
